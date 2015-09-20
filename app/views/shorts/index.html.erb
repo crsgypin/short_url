@@ -1,0 +1,29 @@
+<%if params[:create_new_link]%>
+<%= form_for @new_url , url:shorts_path do |s|%>
+<%= s.label :long_url,"E-mail"%>
+<%= s.url_field :long_url , value:"http://www."%>
+<%= s.submit "新增"%>
+<% end %>
+<%end%>
+
+<table class="table">
+<tr>
+  <td>Long_Url</td>
+  <td>Created</td>
+  <td>Short_Url</td>
+  <td>Short_Url_Clicks</td>
+  <td>Delete</td>
+</tr>
+ <% @shorts.each do |s| %>
+<tr>
+  <td><%=link_to s.long_url, s.long_url %></td>
+  <td><%= s.created_at %></td>
+  <td><%=link_to s.short_url, short_path(s) %></td>
+  <td><%= s.click %></td>
+  <td><%=link_to "刪除", short_path(s),method: :delete,:class =>"btn btn-danger" %></td>
+</tr>
+  <%end%>
+</table>
+<%=link_to "建立新的短網址", shorts_path(create_new_link: "new"),:class =>"btn btn-primary"%>
+
+
