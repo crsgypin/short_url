@@ -5,7 +5,7 @@
 <%= s.submit "新增"%>
 <% end %>
 <%end%>
-
+<br/>
 <table class="table">
 <tr>
   <td>Long_Url</td>
@@ -24,6 +24,7 @@
 </tr>
   <%end%>
 </table>
+<%= paginate @shorts %></br>
 <%=link_to "建立新的短網址", shorts_path(create_new_link: "new"),:class =>"btn btn-primary"%>
 
 

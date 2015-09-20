@@ -1,7 +1,7 @@
 class ShortsController < ApplicationController
 
   def index
-    @shorts = Form.order("click DESC").all
+    @shorts = Form.order("click DESC").page(params[:page]).per(30)
 
     if (params[:create_new_link])
     @new_url = Form.new
