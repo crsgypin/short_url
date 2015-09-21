@@ -11,7 +11,7 @@ class ShortsController < ApplicationController
 
   def create
     @new_url = Form.new(params.require(:form).permit(:long_url,:short_url,:click))
-    @new_url.short_url = "leon.on/" + SecureRandom.hex(3)
+    @new_url.short_url =  SecureRandom.hex(3)
     @new_url.save
     redirect_to shorts_path
   end
@@ -29,4 +29,12 @@ class ShortsController < ApplicationController
     @url.destroy
     redirect_to shorts_path
   end
+
+  def out
+  @short = Form.find_by_short_url(params[:short_url])
+  @short.click += 1
+  @short.save
+  redirect_to @short.long_url
+  end
+
 end

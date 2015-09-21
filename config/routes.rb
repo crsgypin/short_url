@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'shorts#index'
+  get ':short_url' => 'shorts#out'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
